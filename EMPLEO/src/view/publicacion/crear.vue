@@ -6,22 +6,27 @@
                 <div class="card-body">
                     <h5>Coordinador de Sistemas</h5>
                     <hr>
-                    <p><b>Ubicación</b>
-                        <select v-model="publicacion.lugar">
-                            <option value="LAMBAYEQUE">LAMBAYEQUE</option>
-                            <option value="TRUJILLO">TRUJILLO</option>
-                            <option value="PIURA">PIURA</option>
-                            <option value="LIMA">LIMA</option>
-                            <option value="CAJAMARCA">CAJAMARCA</option>
-                            <option value="TUMBES">TUMBES</option>
-                        </select>
-                    </p>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <p><b>Ubicación</b></p>
+                        </div>
+                        <div class="col-sm-8">
+                            <select v-model="publicacion.lugar" class="form-control">
+                                <option value="LAMBAYEQUE">LAMBAYEQUE</option>
+                                <option value="TRUJILLO">TRUJILLO</option>
+                                <option value="PIURA">PIURA</option>
+                                <option value="LIMA">LIMA</option>
+                                <option value="CAJAMARCA">CAJAMARCA</option>
+                                <option value="TUMBES">TUMBES</option>
+                            </select>
+                        </div>
+                    </div>
                     <p><b>Descripción</b></p>
                     <textarea v-model="publicacion.descripcion" class="form-control mb-2" rows="5">
 
                     </textarea>
                     <p><b>Requerimientos</b></p>
-                    <div class="row">
+                    <div class="row form-group">
                         <div class="col-sm-4">
                             <label for="">Educación mínima:</label>
                         </div>
@@ -33,30 +38,30 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row form-group">
                         <div class="col-sm-4">
                             <label for="">
                                 Años de experiencia: 
                             </label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="number" v-model="publicacion.anios">
+                            <input type="number" v-model="publicacion.anios" class="form-control" min="0">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row form-group">
                         <div class="col-sm-4">
                             <label for="">Edad:</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" v-model="publicacion.edad">
+                            <input type="text" v-model="publicacion.edad" class="form-control">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row form-group">
                         <div class="col-sm-4">
                             Conocimientos: 
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" v-model="publicacion.conocimiento">
+                            <input type="text" v-model="publicacion.conocimiento" class="form-control">
                         </div>
                     </div>
                     <div class="col-12 text-center">

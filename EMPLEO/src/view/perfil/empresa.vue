@@ -7,7 +7,9 @@
                     <h5>Convocatorias de Personal</h5>
                     <hr>                    
                     <div class="col-12 text-center my-3">
-                        <button class="btn btn-primary">Nueva Convocatoria</button>
+                        <router-link to="publicacion/crear" class="btn btn-primary">
+                            Nueva Convocatoria
+                        </router-link>
                     </div>
                     <div class="col-12">
                         <table class="table">
