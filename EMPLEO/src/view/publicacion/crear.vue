@@ -21,18 +21,44 @@
 
                     </textarea>
                     <p><b>Requerimientos</b></p>
-                    <p>Educación mínima: 
-                        <select v-model="publicacion.educacion">
-                            <option value="UNIVERSITARIA">UNIVERSITARIA</option>
-                            <option value="TECNICA">TECNICA</option>
-                            <option value="SECUNDARIA">SECUNDARIA</option>
-                        </select>
-                    </p>
-                    <p>Años de experiencia: 
-                        <input type="number" v-model="publicacion.anios">
-                    </p>
-                    <p>Edad: <input type="text" v-model="publicacion.edad"></p>
-                    <p>Conocimientos: <input type="text" v-model="publicacion.conocimiento"></p>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="">Educación mínima:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select v-model="publicacion.educacion" class="form-control">
+                                <option value="UNIVERSITARIA">UNIVERSITARIA</option>
+                                <option value="TECNICA">TECNICA</option>
+                                <option value="SECUNDARIA">SECUNDARIA</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="">
+                                Años de experiencia: 
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" v-model="publicacion.anios">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="">Edad:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" v-model="publicacion.edad">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Conocimientos: 
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" v-model="publicacion.conocimiento">
+                        </div>
+                    </div>
                     <div class="col-12 text-center">
                         <button class="btn btn-primary">PUBLICAR</button>
                     </div>
