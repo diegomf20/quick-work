@@ -4,8 +4,16 @@
         <div class="col-sm-8">
             <div class="card">
                 <div class="card-body">
-                    <h5>Coordinador de Sistemas</h5>
+                    <h5>Crear Publicación</h5>
                     <hr>
+                    <div class="row form-group">
+                        <div class="col-sm-4">
+                            <p><b>Título</b></p>
+                        </div>
+                        <div class="col-sm-8">
+                            <input v-model="publicacion.titulo" type="text" class="form-control">
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-4">
                             <p><b>Ubicación</b></p>
@@ -45,7 +53,7 @@
                             </label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="number" v-model="publicacion.anios" class="form-control" min="0">
+                            <input type="number" v-model="publicacion.experiencia" class="form-control" min="0">
                         </div>
                     </div>
                     <div class="row form-group">
@@ -81,12 +89,14 @@ export default {
     data() {
         return {
             publicacion:{
+                titulo:"",
                 descripcion: "",
                 educacion: "UNIVERSITARIA",
-                anios: 0,
+                experiencia: 0,
                 edad: "",
                 conocimiento: "",
-                lugar: "LAMBAYEQUE"
+                lugar: "LAMBAYEQUE",
+                empresa_id: JSON.parse(local.getItem('cuenta')).id
             }
         }
     },

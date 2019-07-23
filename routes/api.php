@@ -18,3 +18,4 @@ header("Access-Control-Allow-Headers: *");
 
 Route::resource('postulante', 'PostulanteController');
 Route::resource('empresa', 'EmpresaController');
+Route::resource('publicacion', 'PublicacionController');
