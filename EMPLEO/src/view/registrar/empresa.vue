@@ -76,14 +76,14 @@ export default {
     methods: {
         guardar(){
             axios.post(api_link+'empresa',this.empresa)
-                .then(function (data) {
+                .then(response=>{
                     swal({
                         icon:"success",
                         text: "Empresa Registrada", 
                         timer: 3000
                     });
                     local.setItem('tipo_cuenta','empresa');
-                    local.setItem('cuenta',JSON.stringify(this.empresa));
+                    local.setItem('cuenta',JSON.stringify(response.data.data));
                     this.$router.push({path: "/perfil"} );
                 })
         }

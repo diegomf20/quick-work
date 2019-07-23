@@ -12,6 +12,10 @@ var routes =[
         component: require('./view/publicacion.vue').default
     },
     {
+        path: '/publicacion/crear',
+        component: require('./view/publicacion/crear.vue').default
+    },
+    {
         path: '/registrar/empresa',
         component: require('./view/registrar/empresa.vue').default
     },
