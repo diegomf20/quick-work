@@ -3,28 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Postulante;
+use App\Model\Postulacion;
+use App\Model\Publicacion;
 
-class PostulanteController extends Controller
+class PostulacionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $postulaciones=Postulacion::with('empresa')
+            ->with('publicacion')
+            ->where('postulante_id',$request->postulante_id)->get();
+        return response()->json($postulaciones);
     }
 
     /**
@@ -35,18 +29,26 @@ class PostulanteController extends Controller
      */
     public function store(Request $request)
     {
-        $postulante=new Postulante();
-        $postulante->email=$request->email;
-        $postulante->contrasenia=$request->contrasenia;
-        $postulante->puesto=$request->puesto;
-        $postulante->nombre=$request->nombre;
-        $postulante->apellido=$request->apellido;
-        $postulante->nacimiento=$request->nacimiento;
-        $postulante->save();
-        return response()->json([
-            "status"=>"OK",
-            "data"=>$postulante
-        ]);
+        $postulacion=Postulacion::where('publicacion_id',$request->publicacion_id)
+            ->where('postulante_id',$request->postulante_id)
+            ->first();
+        if ($postulacion==null) {
+            $publicacion=Publicacion::where('id',$request->publicacion_id)
+                ->first();
+            $postulacion=new Postulacion();
+            $postulacion->publicacion_id=$request->publicacion_id;
+            $postulacion->postulante_id=$request->postulante_id;
+            $postulacion->empresa_id=$publicacion->empresa_id;
+            $postulacion->save();
+            return response()->json([
+                'status'=>"OK"
+            ]);
+        }else{
+            return response()->json([
+                'status'=>"INFO",
+                'data'=>"Usted ya postulo a este trabajo"
+            ]);
+        }
     }
 
     /**

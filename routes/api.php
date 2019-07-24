@@ -15,7 +15,8 @@ use Illuminate\Http\Request;
 header("Access-Control-Allow-Origin: *");   
 header("Access-Control-Allow-Headers: *");
 
-
+Route::post('login','LoginController@ingresar');
 Route::resource('postulante', 'PostulanteController');
 Route::resource('empresa', 'EmpresaController');
 Route::resource('publicacion', 'PublicacionController');
+Route::resource('postulacion', 'PostulacionController');

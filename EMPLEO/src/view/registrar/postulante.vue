@@ -73,14 +73,17 @@ export default {
     },
     methods: {
         guardar(){
-            swal({
-                icon:"success",
-                text: "Postulante Registrada", 
-                timer: 3000
-            });
-            local.setItem('tipo_cuenta','postulante');
-            local.setItem('cuenta',JSON.stringify(this.postulante));
-            this.$router.push({path: "/perfil"} );
+            axios.post(api_link+'postulante',this.postulante)
+                .then(response=>{
+                    swal({
+                        icon:"success",
+                        text: "Postulante Registrado", 
+                        timer: 3000
+                    });
+                    local.setItem('tipo_cuenta','postulante');
+                    local.setItem('cuenta',JSON.stringify(response.data.data));
+                    this.$router.push({path: "/perfil"} );
+                });
         }
     },
 }

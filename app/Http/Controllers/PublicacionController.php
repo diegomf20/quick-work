@@ -12,9 +12,10 @@ class PublicacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $publicaciones=Publicacion::where('empresa_id',$request->id)->get();
+        return response()->json($publicaciones);
     }
 
     /**
@@ -59,7 +60,8 @@ class PublicacionController extends Controller
      */
     public function show($id)
     {
-        //
+        $publicacion=Publicacion::with('empresa')->where('id',$id)->first();
+        return response()->json($publicacion);
     }
 
     /**

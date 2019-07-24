@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="col-12 text-center">
-                        <button class="btn btn-primary">PUBLICAR</button>
+                        <button @click="guardar()" class="btn btn-primary">PUBLICAR</button>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,17 @@ export default {
         }
     },
     methods: {
-        
+        guardar(){
+            axios.post(api_link+'publicacion',this.publicacion)
+                .then(response=>{
+                    swal({
+                        icon:"success",
+                        text: "Empresa Registrada", 
+                        timer: 3000
+                    });
+                    this.$router.push({path: "/perfil"} );
+                });
+        }
     },
 }
 </script>

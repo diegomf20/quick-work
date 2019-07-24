@@ -25,7 +25,12 @@
                 </ul>
                 <ul class="navbar-nav" style="margin-left: auto;">
                     <li class="nav-item">
-                        hi
+                        <router-link v-if="logeado" to="/Perfil" class="nav-link">
+                            Perfil
+                        </router-link>
+                        <router-link v-else to="/login" class="nav-link">
+                            Login
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -34,10 +39,22 @@
 </template>
 <script>
 export default {
+    data() {
+        return {
+            logeado: (local.getItem('tipo_cuenta')===null)? false : true
+        }
+    },
+    mounted() {
+        var t=this;
+        bus.$on('emit-logear', function (value) {
+            t.logeado=value;
+        })
+    },  
     methods: {
         base(url){
             return public_base+url;
         }
     },
+    
 }
 </script>

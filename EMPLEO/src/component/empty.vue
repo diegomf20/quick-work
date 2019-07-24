@@ -1,6 +1,6 @@
 <template>
     <div>
-        <cHeader></cHeader>
+        <cHeader ref="cabecera"></cHeader>
         <div class="container my-3" >
             <slot/>
         </div>

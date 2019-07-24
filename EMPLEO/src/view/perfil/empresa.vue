@@ -21,7 +21,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr v-for="publicacion in publicaciones">
+                                    <td>{{ publicacion.created_at }}</td>
+                                    <td>{{ publicacion.titulo }}</td>
+                                    <td>{{ (publicacion.estado=='0')? 'Publicado': 'Contratado' }}</td>
+                                    <td>
+                                        <button class="btn btn-info">Ver CVs</button>
+                                    </td>
+                                </tr>
+                                <tr v-if="publicaciones.length==0">
                                     <td colspan="3" class="text-center">Ninguna Publicación realizada.</td>
                                 </tr>
                             </tbody>
@@ -37,6 +45,17 @@ import cardEmpresa from "../../component/card-empresa.vue";
 export default {
     components:{
         cardEmpresa
+    },
+    data() {
+        return {
+            publicaciones:[]
+        }
+    },
+    mounted() {
+        axios.get(api_link+'publicacion',{params:{id: JSON.parse(local.getItem('cuenta')).id}})
+        .then(response=>{
+            this.publicaciones=response.data;
+        });
     },
     methods: {
         

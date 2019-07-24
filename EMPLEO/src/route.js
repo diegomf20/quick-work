@@ -8,12 +8,16 @@ var routes =[
         component: require('./view/index.vue').default
     },
     {
-        path: '/publicacion',
-        component: require('./view/publicacion.vue').default
+        path: '/oferta/:id',
+        component: require('./view/oferta.vue').default
     },
     {
         path: '/publicacion/crear',
         component: require('./view/publicacion/crear.vue').default
+    },
+    {
+        path: '/publicacion/:id',
+        component: require('./view/publicacion/ver.vue').default
     },
     {
         path: '/registrar/empresa',
@@ -27,10 +31,10 @@ var routes =[
         path: '/perfil',
         component: require('./view/perfil/index.vue').default
     },
-    // {
-    //     path: '/perfil',
-    //     component: require('./view/perfil/empresa.vue').default
-    // }
+    {
+        path: '/login',
+        component: require('./view/login.vue').default
+    }
 ];
 var router=new VueRouter({
     mode: 'history',

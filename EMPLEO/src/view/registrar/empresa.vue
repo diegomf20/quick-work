@@ -85,7 +85,7 @@ export default {
                     local.setItem('tipo_cuenta','empresa');
                     local.setItem('cuenta',JSON.stringify(response.data.data));
                     this.$router.push({path: "/perfil"} );
-                })
+                });
         }
     },
 }
